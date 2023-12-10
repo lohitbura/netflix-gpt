@@ -3,14 +3,13 @@ import Header from './Header'
 import { validateForm } from '../utils/validateForm';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth } from '../utils/firebase';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/redux/userSlice';
+import { BACKGROUND_LOGIN, USER_AVATAR } from '../utils/constants';
 
 const Login = () => {
 
     const dispatch = useDispatch();
-    const navigate = useNavigate();
     const [isLogin, setIsLogin] = useState(true);
     const [errorMessage, setErrorMessage] = useState(null);
 
@@ -58,7 +57,7 @@ const Login = () => {
         if (isLogin) {
             signInWithEmailAndPassword(auth,email.current.value, password.current.value)
                 .then((userCredential) => {
-                    navigate('/browse');
+                
                 })
                 .catch((error) => {
                     const errorCode = error.code;
@@ -71,7 +70,7 @@ const Login = () => {
                 .then((userCredential) => {
 
                     updateProfile(auth.currentUser, {
-                        displayName: name.current.value, photoURL: "https://avatars.githubusercontent.com/u/30217398?v=4"
+                        displayName: name.current.value, photoURL: USER_AVATAR
                       }).then(() => {
                         dispatch(addUser({
                             uid:auth.currentUser.uid,
@@ -83,7 +82,6 @@ const Login = () => {
                         
                       });
                
-                    navigate('/browse');
                 })
                 .catch((error) => {
                     const errorCode = error.code;
@@ -99,7 +97,7 @@ const Login = () => {
         <div>
             <Header />
             <div className='absolute'>
-                <img src='https://assets.nflxext.com/ffe/siteui/vlv3/b4c7f092-0488-48b7-854d-ca055a84fb4f/5b22968d-b94f-44ec-bea3-45dcf457f29e/IN-en-20231204-popsignuptwoweeks-perspective_alpha_website_large.jpg'
+                <img src={BACKGROUND_LOGIN}
                 />
             </div>
          
