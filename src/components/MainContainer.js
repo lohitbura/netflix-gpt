@@ -5,11 +5,11 @@ import { useSelector } from 'react-redux'
 
 const MainContainer = () => {
 
-    const movies = useSelector(state=>state.movies?.nowPlayingMovies);
+    const movies = useSelector(state=>state.movies?.topRatedMovies);
 
     if(movies===null) return;
 
-    const movieData = movies?.data?.results[2]
+    const movieData = movies?.data?.results[3]
 
     console.log(movieData);
 

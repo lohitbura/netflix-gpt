@@ -71,8 +71,7 @@ const Header = () => {
                 }
                     </select>
              )}
-              
-          
+            
               <button className=' bg-red-700 text-white mx-4 py-2 px-4 rounded-lg' onClick={()=>handleToggleButton()}>{toggleGptButtonState?'Home Page':'Gpt Search'}</button>
               <img src={user.photoURL} className='w-14 rounded-lg'></img>
               <h3 className='mx-2 text-white cursor-pointer' onClick={()=>{
