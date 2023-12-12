@@ -2,7 +2,7 @@ import { API_OPTIONS } from "../utils/api_constants";
 import { API_FAILURE, API_SUCCESS } from "../utils/constants";
 import { apiResponseWrapper } from "../utils/api_response_wrapper";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addNowPlayingMovies } from "../utils/redux/moviesSlice";
 
 
@@ -10,8 +10,10 @@ import { addNowPlayingMovies } from "../utils/redux/moviesSlice";
 
     const dispatch = useDispatch();
 
+    const nowPlayingMovies  = useSelector(store=>store.movies.nowPlayingMovies);
+
     useEffect(()=>{
-        fetchMovies();
+      !nowPlayingMovies &&  fetchMovies();
     },[])
 
    const fetchMovies = async()=>{

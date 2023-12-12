@@ -15,7 +15,7 @@ const MainContainer = () => {
 
 
   return (
-    <div>
+    <div className=' py-28 sm:py-0'>
    
       <VideoTitle movieData={movieData}/>
       <VideoBackground movieId={movieData.id}/>

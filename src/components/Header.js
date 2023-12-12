@@ -58,12 +58,12 @@ const Header = () => {
 
   return (
     <div className='absolute w-full p-4 z-10 bg-gradient-to-b from-black'>
-      <div className='flex justify-between align-middle items-center'>
-      <img className='w-44' src={LOGO}
+      <div className='flex flex-col  sm:flex-row justify-between align-middle items-center'>
+      <img className=' w-20 sm:w-44' src={LOGO}
        alt='logo'/>
        {
           user && (
-            <div className='flex items-center'>
+            <div className='flex justify-between sm:justify-end items-center'>
              { toggleGptButtonState && (
               <select className=' bg-slate-500 py-2 px-4 rounded-lg text-white' onChange={(e)=>handleChangeLanguage(e)} defaultValue={langKey}>
                 {
